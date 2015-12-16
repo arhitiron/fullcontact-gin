@@ -12,14 +12,11 @@ import (
 var DbMap *gorp.DbMap
 var Txn *gorp.Transaction
 
-type Gorp struct {
-}
+type Gorp struct {}
 
 func (c *Gorp) Begin() {
 	txn, err := DbMap.Begin()
-	if err != nil {
-		panic(err)
-	}
+	checkErr(err, "Begin starts a gorp Transaction failed")
 	Txn = txn
 	return
 }

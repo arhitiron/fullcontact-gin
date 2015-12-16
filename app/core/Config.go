@@ -17,9 +17,9 @@ type Config struct {
 		Port string
 	}
 	Database struct {
-		DriverName string
+		DriverName string `yaml:"driver_name"`
 		Database   string
-		UserName   string
+		UserName   string `yaml:"user_name"`
 		Password   string
 		Host       string
 		Charset    string
@@ -28,7 +28,7 @@ type Config struct {
 	}
 	Kafka struct {
 		Brokers      string
-		DefaultTopic string
+		DefaultTopic string `yaml:"default_topic"`
 	}
 }
 
