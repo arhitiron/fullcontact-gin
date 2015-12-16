@@ -1,15 +1,14 @@
 package routers
 
 import (
-	"github.com/gin-gonic/gin"
-	ctrl "fullcontact-gin/app/controllers"
 	"strconv"
-	"fullcontact-gin/app/models"
+
+	ctrl "github.com/arhitiron/fullcontact-gin/app/controllers"
+	"github.com/arhitiron/fullcontact-gin/app/models"
+	"github.com/gin-gonic/gin"
 )
 
-type Router struct {
-
-}
+type Router struct{}
 
 func (r *Router) createApiWith(e *gin.Engine) *gin.RouterGroup {
 	return e.Group("/api")
@@ -48,4 +47,3 @@ func (r *Router) GetRouter() *gin.Engine {
 
 	return router
 }
-

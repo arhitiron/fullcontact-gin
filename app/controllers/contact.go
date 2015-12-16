@@ -1,16 +1,17 @@
 package controllers
 
 import (
-	"fullcontact-gin/app/models"
-	"fullcontact-gin/app/dao"
 	"log"
+
+	"github.com/arhitiron/fullcontact-gin/app/dao"
+	"github.com/arhitiron/fullcontact-gin/app/models"
 )
 
 type ContactController struct {
-
 }
 
 var itemDao dao.ContactDao
+
 func init() {
 	itemDao = dao.ContactDao{}
 }

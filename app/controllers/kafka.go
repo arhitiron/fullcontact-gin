@@ -1,22 +1,23 @@
 package controllers
+
 import (
-	"log"
-	"github.com/Shopify/sarama"
 	"crypto/tls"
-	"strings"
-	"fmt"
 	"encoding/json"
-	"fullcontact-gin/app/models"
-	"fullcontact-gin/app/core"
+	"fmt"
+	"log"
+	"strings"
+
+	"github.com/Shopify/sarama"
+	"github.com/arhitiron/fullcontact-gin/app/core"
+	"github.com/arhitiron/fullcontact-gin/app/models"
 )
 
 var dataCollector sarama.SyncProducer
 
 type KafkaController struct {
-
 }
 
-func (c * KafkaController) Publish(message []byte) {
+func (c *KafkaController) Publish(message []byte) {
 	if dataCollector == nil {
 		log.Println("Init c.dataCollector", dataCollector)
 		brokerList := strings.Split(core.Cfg.Kafka.Brokers, ",")

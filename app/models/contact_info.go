@@ -1,6 +1,5 @@
 package models
 
-
 type ContactInfo struct {
 	FamilyName  string    `json:"familyName"`
 	GivenName   string    `json:"givenName"`

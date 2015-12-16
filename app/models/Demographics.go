@@ -1,6 +1,5 @@
 package models
 
-
 type Demographics struct {
 	LocationGeneral string          `json:"locationGeneral"`
 	LocationDeduced LocationDeduced `json:"locationDeduced"`

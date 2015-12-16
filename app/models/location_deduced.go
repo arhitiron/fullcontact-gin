@@ -1,6 +1,5 @@
 package models
 
-
 type LocationDeduced struct {
 	NormalizedLocation string    `json:"normalizedLocation"`
 	DeducedLocation    string    `json:"deducedLocation"`
