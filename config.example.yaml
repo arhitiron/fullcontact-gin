@@ -1,0 +1,16 @@
+global:
+  port: 9000
+
+database:
+  driver_name: mysql
+  database: awesome_dbname
+  user_name: johndoe
+  password: password
+  host: localhost
+  charset: utf8
+  engine: InnoDB
+  encoding: utf8
+
+kafka:
+  brokers: 1,2
+  default_topic: test
