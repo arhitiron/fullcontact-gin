@@ -1,17 +1,18 @@
 package core
+
 import (
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/go-gorp/gorp"
-	"fullcontact-gin/app/models"
 	"database/sql"
 	"log"
+
+	"github.com/arhitiron/fullcontact-gin/app/models"
+	"github.com/go-gorp/gorp"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 var DbMap *gorp.DbMap
 var Txn *gorp.Transaction
 
 type Gorp struct {
-
 }
 
 func (c *Gorp) Begin() {
@@ -67,4 +68,3 @@ func checkErr(err error, msg string) {
 		log.Fatalln(msg, err)
 	}
 }
-

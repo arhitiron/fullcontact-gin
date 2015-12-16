@@ -1,6 +1,5 @@
 package models
 
-
 type SocialProfile struct {
 	TypeId    string `json:"typeId"`
 	TypeName  string `json:"typeName"`

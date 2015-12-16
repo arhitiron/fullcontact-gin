@@ -1,11 +1,11 @@
 package dao
+
 import (
-	"fullcontact-gin/app/models"
-	"fullcontact-gin/app/core"
+	"github.com/arhitiron/fullcontact-gin/app/core"
+	"github.com/arhitiron/fullcontact-gin/app/models"
 )
 
 type ContactDao struct {
-
 }
 
 func (this *ContactDao) Save(item models.Contact) {
@@ -25,11 +25,9 @@ func (this *ContactDao) FindAll() []models.Contact {
 	return items
 }
 
-
 func (this *ContactDao) FindById(id int) models.Contact {
 	var item models.Contact
 	err := core.DbMap.SelectOne(&item, "SELECT * FROM items WHERE id=?", id)
-
 
 	if err != nil {
 		panic(err)

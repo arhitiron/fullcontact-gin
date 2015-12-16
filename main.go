@@ -1,9 +1,9 @@
 package main
-import (
-	"fullcontact-gin/app/core"
-	"fullcontact-gin/app/routers"
-)
 
+import (
+	"github.com/arhitiron/fullcontact-gin/app/core"
+	"github.com/arhitiron/fullcontact-gin/app/routers"
+)
 
 func main() {
 	core.InitCfg()
