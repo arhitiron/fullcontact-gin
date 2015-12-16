@@ -1,10 +1,14 @@
 package core
 import (
 	"log"
-	"gopkg.in/gcfg.v1"
+	"io/ioutil"
+	"gopkg.in/yaml.v2"
 )
 
-var Cfg Config
+var (
+	Cfg Config
+	configFile = "config.yaml"
+)
 
 type Config struct {
 	Global   struct {
@@ -27,8 +31,17 @@ type Config struct {
 }
 
 func InitCfg() {
-	err := gcfg.ReadFileInto(&Cfg, "./config.gcfg")
-	if err != nil {
-		log.Fatalf("Failed to parse gcfg data: %s", err)
+
+	data, fileReadErr := ioutil.ReadFile(configFile)
+	if fileReadErr != nil {
+		log.Fatalf("Failed to read", fileReadErr)
 	}
+
+	err := yaml.Unmarshal(data, &Cfg)
+
+	if err != nil {
+		log.Fatalf("Failed to parse yaml data: %s", err)
+	}
+
+
 }

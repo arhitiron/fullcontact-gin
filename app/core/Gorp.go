@@ -14,7 +14,6 @@ type Gorp struct {
 
 }
 
-
 func (c *Gorp) Begin() {
 	txn, err := DbMap.Begin()
 	if err != nil {
@@ -50,7 +49,6 @@ func (c *Gorp) Rollback() {
 }
 
 func InitDb() *gorp.DbMap {
-
 	db, err := sql.Open(Cfg.Database.DriverName, generateDataSourceName())
 	checkErr(err, "sql.Open failed")
 	DbMap = &gorp.DbMap{Db: db, Dialect: gorp.MySQLDialect{Cfg.Database.Engine, Cfg.Database.Encoding}}

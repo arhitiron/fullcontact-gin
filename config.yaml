@@ -1,0 +1,16 @@
+global:
+  port: "9000"
+
+database:
+  drivername: "mysql"
+  database: "items"
+  username: "items"
+  password: "9LDuBHeG4KEeVRCR"
+  host: "antyron.com:3306"
+  charset: "utf8"
+  engine: "InnoDB"
+  encoding: "UTF8"
+
+kafka:
+  brokers: "localhost:9092"
+  defaultTopic: "defaultTopic"
