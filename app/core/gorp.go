@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"log"
 
-	"github.com/arhitiron/fullcontact-gin/app/models"
+	"fullcontact-gin/app/models"
 	"github.com/go-gorp/gorp"
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -51,6 +51,7 @@ func InitDb() *gorp.DbMap {
 	checkErr(err, "sql.Open failed")
 	DbMap = &gorp.DbMap{Db: db, Dialect: gorp.MySQLDialect{Cfg.Database.Engine, Cfg.Database.Encoding}}
 	DbMap.AddTableWithName(models.Contact{}, "items").SetKeys(true, "Id")
+	DbMap.AddTableWithName(models.TargetPerson{}, "target_persons").SetKeys(true, "Id")
 	err = DbMap.CreateTablesIfNotExists()
 	checkErr(err, "Create tables failed")
 	return DbMap

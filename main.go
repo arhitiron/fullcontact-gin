@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/arhitiron/fullcontact-gin/app/core"
-	"github.com/arhitiron/fullcontact-gin/app/routers"
+	"fullcontact-gin/app/core"
+	"fullcontact-gin/app/routers"
 )
 
 func main() {

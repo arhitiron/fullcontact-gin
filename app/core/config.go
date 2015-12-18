@@ -14,7 +14,8 @@ var (
 
 type Config struct {
 	Global struct {
-		Port string
+		Port       string
+		ApiVersion string `yaml:"api_version"`
 	}
 	Database struct {
 		DriverName string `yaml:"driver_name"`
@@ -29,6 +30,10 @@ type Config struct {
 	Kafka struct {
 		Brokers      string
 		DefaultTopic string `yaml:"default_topic"`
+	}
+	Fullcontact struct{
+		WebhookUrl string `yaml:"webhook-url"`
+		ApiKey     string `yaml:"api-key"`
 	}
 }
 

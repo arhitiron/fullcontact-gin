@@ -1,16 +1,15 @@
 package dao
 
 import (
-	"github.com/arhitiron/fullcontact-gin/app/core"
-	"github.com/arhitiron/fullcontact-gin/app/models"
+	"fullcontact-gin/app/core"
+	"fullcontact-gin/app/models"
 )
 
-type ContactDao struct {
-}
+type ContactDao struct {}
 
 func (this *ContactDao) Save(item models.Contact) {
 	err := core.DbMap.Insert(&item)
-	if err == nil {
+	if err != nil {
 		panic(err)
 	}
 }

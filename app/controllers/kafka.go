@@ -8,8 +8,8 @@ import (
 	"strings"
 
 	"github.com/Shopify/sarama"
-	"github.com/arhitiron/fullcontact-gin/app/core"
-	"github.com/arhitiron/fullcontact-gin/app/models"
+	"fullcontact-gin/app/core"
+	"fullcontact-gin/app/models"
 )
 
 var dataCollector sarama.SyncProducer

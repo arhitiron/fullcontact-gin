@@ -1,48 +1,50 @@
 package routers
 
 import (
-	"strconv"
-
-	ctrl "github.com/arhitiron/fullcontact-gin/app/controllers"
-	"github.com/arhitiron/fullcontact-gin/app/models"
+	ctrl "fullcontact-gin/app/controllers"
+	"fullcontact-gin/app/models"
 	"github.com/gin-gonic/gin"
+	"fullcontact-gin/app/core"
 )
 
 type Router struct{}
 
-func (r *Router) createApiWith(e *gin.Engine) *gin.RouterGroup {
+func (r *Router) createApi(e *gin.Engine) *gin.RouterGroup {
 	return e.Group("/api")
 }
 
-func (r *Router) setVersion1(e *gin.RouterGroup) *gin.RouterGroup {
-	return e.Group("/v1")
+func (r *Router) setVersion(e *gin.RouterGroup) *gin.RouterGroup {
+	version := core.Cfg.Global.ApiVersion
+	return e.Group(version)
 }
 
 func (r *Router) GetRouter() *gin.Engine {
 	router := gin.Default()
-	api := r.createApiWith(router)
-	apiV1 := r.setVersion1(api)
+	api := r.createApi(router)
+	api = r.setVersion(api)
 
-	apiV1.GET("/contacts", func(c *gin.Context) {
-		c.JSON(200, ctrl.ContactController{}.GetAllItems())
-	})
-
-	apiV1.GET("/contacts/:id", func(c *gin.Context) {
-		id, err := strconv.Atoi(c.Param("id"))
-		if err != nil {
-			panic(err)
-		}
-		c.JSON(200, ctrl.ContactController{}.GetItem(id))
-	})
-
-	apiV1.POST("/contacts", func(c *gin.Context) {
+	api.POST("/handle-person", func(c *gin.Context) {
 		var item models.Contact
 		c.BindJSON(&item)
-
 		kafka := ctrl.KafkaController{}
 		kafka.PublishContact(item)
-
 		c.JSON(200, item)
+	})
+
+	api.GET("/persons", func(c *gin.Context) {
+		c.JSON(200, ctrl.PersonController{}.GetAll())
+	})
+
+	api.POST("/persons", func(c *gin.Context) {
+		var persons []models.TargetPerson
+		c.BindJSON(&persons)
+		ctrl.PersonController{}.AddItems(persons)
+		c.JSON(200, gin.H{"success": true})
+	})
+
+	api.POST("/process", func(c *gin.Context) {
+
+		c.JSON(200, gin.H{"status": "started"})
 	})
 
 	return router
