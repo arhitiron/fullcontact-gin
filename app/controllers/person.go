@@ -35,7 +35,7 @@ func (c PersonController) ProcessPersons() {
 	fc := core.Cfg.Fullcontact
 	for _, person := range persons {
 		utils.SendToFullcontact(person.Email, fc.WebhookUrl, fc.ApiKey)
-		person.Processed = false
+		person.Processed = true
 		personDao.Save(person)
 	}
 }
