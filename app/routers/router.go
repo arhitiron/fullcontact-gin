@@ -24,11 +24,19 @@ func (r *Router) GetRouter() *gin.Engine {
 	api = r.setVersion(api)
 
 	api.POST("/handle-person", func(c *gin.Context) {
-		var item models.Contact
-		c.BindJSON(&item)
+		var person models.Person
+		c.BindJSON(&person)
 		kafka := ctrl.KafkaController{}
-		kafka.PublishContact(item)
-		c.JSON(200, item)
+		kafka.PublishContact(person)
+		c.JSON(200, person)
+	})
+
+	api.POST("/handle-person-webhook", func(c *gin.Context) {
+		var wh models.Webhook
+		c.BindJSON(&wh)
+		kafka := ctrl.KafkaController{}
+		kafka.PublishContact(wh.Result)
+		c.JSON(200, wh)
 	})
 
 	api.GET("/persons", func(c *gin.Context) {

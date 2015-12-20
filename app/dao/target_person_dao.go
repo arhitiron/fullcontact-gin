@@ -10,8 +10,8 @@ type TargetPersonDao struct {}
 
 func (d *TargetPersonDao) Save(person models.TargetPerson) {
 	var err error
-	if (person.Id != nil) {
-		err = core.DbMap.Update(&person)
+	if (person.Id != 0) {
+		_,err = core.DbMap.Update(&person)
 	} else {
 		err = core.DbMap.Insert(&person)
 	}

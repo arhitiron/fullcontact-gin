@@ -1,6 +1,6 @@
 package models
 
-type Contact struct {
+type Person struct {
 	Id               int
 	Status           int              `json:"status"`
 	RequestId        string           `json:"requestId"`

@@ -35,7 +35,7 @@ func (c *KafkaController) Publish(message []byte) {
 	}
 }
 
-func (c *KafkaController) PublishContact(contact models.Contact) {
+func (c *KafkaController) PublishContact(contact models.Person) {
 	kafka := KafkaController{}
 	itemStr, err := json.Marshal(contact)
 	if err != nil {

@@ -50,7 +50,7 @@ func InitDb() *gorp.DbMap {
 	db, err := sql.Open(Cfg.Database.DriverName, generateDataSourceName())
 	checkErr(err, "sql.Open failed")
 	DbMap = &gorp.DbMap{Db: db, Dialect: gorp.MySQLDialect{Cfg.Database.Engine, Cfg.Database.Encoding}}
-	DbMap.AddTableWithName(models.Contact{}, "items").SetKeys(true, "Id")
+	DbMap.AddTableWithName(models.Person{}, "items").SetKeys(true, "Id")
 	DbMap.AddTableWithName(models.TargetPerson{}, "target_persons").SetKeys(true, "Id")
 	err = DbMap.CreateTablesIfNotExists()
 	checkErr(err, "Create tables failed")
