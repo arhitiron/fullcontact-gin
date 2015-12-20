@@ -16,6 +16,7 @@ func SendToFullcontact(email string, webhookUrl string, apiKey string) {
 	parameters := url.Values{}
 	parameters.Add("email", email)
 	parameters.Add("webhookUrl", webhookUrl)
+	parameters.Add("webhookBody", "json")
 	parameters.Add("apiKey", apiKey)
 	apiUrl.RawQuery = parameters.Encode()
 
