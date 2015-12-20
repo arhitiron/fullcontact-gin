@@ -43,7 +43,7 @@ func (r *Router) GetRouter() *gin.Engine {
 	})
 
 	api.POST("/process", func(c *gin.Context) {
-
+		ctrl.PersonController{}.ProcessPersons()
 		c.JSON(200, gin.H{"status": "started"})
 	})
 
